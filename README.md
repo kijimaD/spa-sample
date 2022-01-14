@@ -1,7 +1,7 @@
 # README
 
-API: localhost:3001
-Front: localhost:8001
+Rails: localhost:3001
+React: localhost:8001
 
 ## Run
 
