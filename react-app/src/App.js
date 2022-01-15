@@ -29,21 +29,22 @@ const App = () => {
     fetch();
   };
 
-  useEffect(() => {
-    fetch();
-  }, []);
-
-  const toggleIsDone = (index) => {
-    const tasksCopy = [...tasks];
-    const isDone = tasksCopy[index].isDone;
-    tasksCopy[index].isDone = !isDone;
-    setTasks(tasksCopy);
-  };
-
-  const destroyTask = async(id) => {
+  const destroyTask = async (id) => {
     await axios.delete(`http://localhost:3001/tasks/${id}`);
     fetch()
   }
+
+  const toggleIsDone = async (id, index) => {
+    const isDone = tasks[index].is_done;
+    await axios.put(`http://localhost:3001/tasks/${id}`, {
+      is_done: !isDone,
+    });
+    fetch();
+  };
+
+  useEffect(() => {
+    fetch();
+  }, []);
 
   return (
     <Box mt="64px">
