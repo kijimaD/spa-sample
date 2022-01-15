@@ -40,6 +40,11 @@ const App = () => {
     setTasks(tasksCopy);
   };
 
+  const destroyTask = async(id) => {
+    await axios.delete(`http://localhost:3001/tasks/${id}`);
+    fetch()
+  }
+
   return (
     <Box mt="64px">
       <Center>
@@ -65,11 +70,13 @@ const App = () => {
             {tasks.map((task, index) => {
               return (
                 <Task
+                  id={task.id}
                   key={index}
                   index={index}
                   name={task.name}
                   isDone={task.is_done}
                   toggleIsDone={toggleIsDone}
+                  destroyTask={destroyTask}
                 />
               );
             })}
