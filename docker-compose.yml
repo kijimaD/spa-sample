@@ -16,11 +16,14 @@ services:
     build:
       context: .
       dockerfile: Dockerfile-Front
+    environment:
+      CHOKIDAR_USEPOLLING: 1 # hot reload is not working...
     command: bash -c "yarn start"
     ports:
       - 8001:3000
     depends_on:
       - rails
     stdin_open: true
+    tty: true
     volumes:
       - ./react-app:/react-app
